@@ -3,32 +3,18 @@ kind: Pod
 metadata:
   name: pod-a
 spec:
-  containers:
-  - name: guestbook
-    env:
-    - name: FOO
-      value: ham
-
+  serviceAccountName: sa-1
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   name: pod-b
 spec:
-  containers:
-  - name: guestbook
-    env:
-    - name: BAR
-      value: spam
-
+  serviceAccountName: sa-2
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   name: pod-c
 spec:
-  containers:
-  - name: guestbook
-    env:
-    - name: BAZ
-      value: eggs
+  serviceAccountName: sa-3

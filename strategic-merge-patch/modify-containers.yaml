@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: guestbook
+spec:
+  containers:
+    # 1. update memory limit of the guestbook container
+  - name: guestbook
+    resources:
+      limits:
+        memory: 1Gi
+    # 2. delete the haproxy sidecar
+  - $patch: delete
+    name: haproxy
+    # 3. add a new nginx sidecar
+  - name: nginx
+    image: nginx:latest

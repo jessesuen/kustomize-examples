@@ -1,3 +1,5 @@
+# The Kubernetes List kind is used, because YAML anchors and aliases can only reference
+# objects in the same document
 apiVersion: v1
 kind: List
 items:
@@ -8,8 +10,8 @@ items:
   spec: &podSpec
     containers:
     - name: guestbook
-      image: guestbook:v1.0
-# the pods below are clones of the pod spec above (with different names)
+      image: guestbook:v1
+# the pods defined below are clones of the pod spec above (with different names)
 - apiVersion: v1
   kind: Pod
   metadata:

@@ -5,8 +5,7 @@ metadata:
 spec:
   containers:
   - name: guestbook
-    image: guestbook:v1.0
-
+    image: guestbook:v1
 ---
 apiVersion: v1
 kind: Pod
@@ -15,8 +14,7 @@ metadata:
 spec:
   containers:
   - name: guestbook
-    image: guestbook:v2.0
-
+    image: guestbook:v2
 ---
 apiVersion: v1
 kind: Pod
@@ -25,4 +23,4 @@ metadata:
 spec:
   containers:
   - name: guestbook
-    image: guestbook:v3.0
+    image: guestbook:v3

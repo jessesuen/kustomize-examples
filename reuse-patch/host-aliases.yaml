@@ -1,3 +1,5 @@
+# The Kubernetes List kind is used, because YAML anchors and aliases can only reference
+# objects in the same document
 apiVersion: v1
 kind: List
 items:
@@ -5,7 +7,7 @@ items:
   kind: Pod
   metadata:
     name: pod-a
-  spec: &hostAliases
+  spec: &hostAliases  # Set an YAML anchor, called hostAliases for .spec
     hostAliases:
     - ip: 1.1.1.1
       hostnames:
@@ -17,7 +19,7 @@ items:
   kind: Pod
   metadata:
     name: pod-b
-  spec: *hostAliases
+  spec: *hostAliases  # Reference/inject the hostAliases anchor with a YAML alias
 - apiVersion: v1
   kind: Pod
   metadata:

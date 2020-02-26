@@ -1,8 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: old-name
+  name: guestbook
 spec:
   containers:
   - name: guestbook
     image: guestbook:latest
+  - name: haproxy
+    image: haproxy:latest

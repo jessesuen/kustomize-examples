@@ -1,9 +1,0 @@
-apiVersion: foo/v1 # note difference in apiVersion
-kind: Service
-metadata:
-  name: guestbook-svc
-spec:
-  ports:
-  - name: https
-    port: 443
-    targetPort: 8443
