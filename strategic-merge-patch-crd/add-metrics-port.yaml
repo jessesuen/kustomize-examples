@@ -1,0 +1,9 @@
+apiVersion: foo/v1 # note difference in apiVersion
+kind: Service
+metadata:
+  name: guestbook-svc
+spec:
+  ports:
+  - name: metrics
+    port: 8490
+    targetPort: 8490

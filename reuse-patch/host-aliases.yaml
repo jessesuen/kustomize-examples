@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    name: pod-a
+  spec: &hostAliases
+    hostAliases:
+    - ip: 1.1.1.1
+      hostnames:
+      - a.example.com
+    - ip: 2.2.2.2
+      hostnames:
+      - b.example.com
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    name: pod-b
+  spec: *hostAliases
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    name: pod-c
+  spec: *hostAliases

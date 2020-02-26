@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-a
+spec:
+  containers:
+  - name: guestbook
+    image: guestbook:v1.0
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-b
+spec:
+  containers:
+  - name: guestbook
+    image: guestbook:v2.0
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-c
+spec:
+  containers:
+  - name: guestbook
+    image: guestbook:v3.0
