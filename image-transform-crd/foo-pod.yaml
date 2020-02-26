@@ -1,0 +1,19 @@
+apiVersion: v1 
+kind: FooPod   # note difference in kind
+metadata:
+  name: my-foo-pod
+spec:
+  random:
+    path:
+      which:
+        has:
+          containers:
+          - name: guestbook
+            # the image field below will still be updated by image transformation, because the
+            # structure is similar to k8s types
+            image: guestbook:REPLACEME
+          containerz: # containerz with a 'z'
+          - name: guestbook
+            # this image field below will NOT be updated by image transformation since the structure
+            # does not match signature
+            image: guestbook:REPLACEME
