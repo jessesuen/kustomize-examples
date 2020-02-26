@@ -3,3 +3,6 @@ kind: Kustomization
 
 resources:
 - one-to-many.yaml
+
+patchesStrategicMerge:
+- variants.yaml
