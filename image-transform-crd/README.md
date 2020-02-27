@@ -1,7 +1,8 @@
 # Image Transformation
 
-This example demonstrates how kustomize is able to automatically detect places where
-images are used in a spec, and replace them with the image transformer.
+This example demonstrates how kustomize 
+[automatically detects](https://github.com/kubernetes-sigs/kustomize/blob/4a7ade6421620b1ef4cccf9162374af35b6f6db9/plugin/builtin/imagetagtransformer/ImageTagTransformer.go#L84) 
+portions of the spec where container images might be used, and replaces them using image transformation.
 
 Base `foo-pod.yaml`:
 
@@ -23,6 +24,21 @@ spec:
             image: guestbook:REPLACEME
 ```
 
+The `kustomization.yaml` uses image transformation:
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- foo-pod.yaml
+
+images:
+- name: guestbook
+  newTag: v2
+```
+
+
 Final output:
 
 ```yaml
@@ -36,8 +52,8 @@ spec:
       which:
         has:
           containers:
-            # the image field below was updated by image transformation, because the
-            # structure is similar to k8s types
+            # the image field below was updated by image transformation, because the containers
+            # structure is something which appears similar to native k8s types
           - image: guestbook:v2
             name: guestbook
           containerz:
