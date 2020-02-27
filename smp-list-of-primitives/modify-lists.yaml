@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-svc
+  finalizers:
+  - bar
+spec:
+  loadBalancerSourceRanges:
+  - 2.2.2.2
