@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: animal-sounds
+spec:
+  template:
+    metadata:
+      labels:
+        app: animal-sounds
+    spec:
+      containers:
+      - name: animal-sounds
+        image: animal-sounds:v1
+        env:
+        - name: COWSAY
+          valueFrom:
+            configMapKeyRef:
+              name: animals-say  # will be renamed with configMapGenerator suffix hash
+              key: cow.txt
+        volumeMounts:
+        - name: animals-say-vol
+          mountPath: /etc/animals-say
+      volumes:
+      - name: animals-say-vol
+        configMap:
+          name: animals-say  # will be renamed with configMapGenerator suffix hash

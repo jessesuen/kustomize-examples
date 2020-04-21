@@ -1,9 +1,10 @@
 # Strategic Merge Patch (SMP) with Custom Resources
 
-
 This example is identical to the [strategic-merge-patch](../strategic-merge-patch) example,
 except for the fact that it uses a custom resource (`foo/v1 Pod`) instead of a native Kuberentes
-kind (`v1 Pod`). This example highlights kustomize's inability to strategic merge patch an array inside unknown resource kinds (i.e. custom resources), and demonstrates the fact that it falls back to standard json merge patching.
+kind (`v1 Pod`). This example highlights kustomize's inability to strategic merge patch an array
+inside unknown resource kinds (i.e. custom resources), and demonstrates the fact that it falls back
+to standard json merge patching.
 
 Base: `pod.yaml`:
 ```yaml

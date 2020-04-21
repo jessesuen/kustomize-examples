@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+
+configMapGenerator:
+- name: animals-say
+  files:
+  - whale.txt
+  - cow.txt=rename-me.txt
+
+generatorOptions:
+  # Adding IgnoreExtraneous annotation is useful when using configMapGenerator with Argo CD.
+  # This annotation prevents old ConfigMaps (which have yet to be pruned) from causing Argo CD
+  # applications from being "OutOfSync".
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+
+  # Kustomize's behavior of adding name sufix hash to ConfigMaps can be disabled entirely:
+  # disableNameSuffixHash: true
