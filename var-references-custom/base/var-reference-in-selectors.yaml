@@ -1,0 +1,10 @@
+varReference:
+- path: spec/selector/app
+  kind: Service
+  apiVersion: v1
+- path: spec/selector/matchLabels/app
+  kind: Deployment
+  apiVersion: apps/v1
+- path: spec/template/metadata/labels/app
+  kind: Deployment
+  apiVersion: apps/v1

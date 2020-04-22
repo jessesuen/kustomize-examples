@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: guestbook
+spec:
+  selector:
+    matchLabels:
+      app: $(DEPLOYMENT_NAME)
+  template:
+    metadata:
+      labels:
+        app: $(DEPLOYMENT_NAME)
+    spec:
+      containers:
+      - name: guestbook
+        image: guestbook:v1

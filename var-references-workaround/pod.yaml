@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: guestbook
+spec:
+  containers:
+  - name: guestbook
+    image: guestbook:v1
+    command:
+    - echo $(FOO) $(BAR) $(BAZ)

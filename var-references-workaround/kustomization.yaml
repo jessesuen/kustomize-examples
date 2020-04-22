@@ -1,0 +1,41 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- pod.yaml
+
+# This section acts as a poor man's parameterization definition. We define a dummy ConfigMap
+# with some literal values. This ConfigMap is not really used by any pods, it is simply used to hold
+# values (so that it can be referenced from a var)
+configMapGenerator:
+- name: kustomize-vars
+  literals:
+  - foo=spam
+  - bar=ham
+  - baz=eggs
+generatorOptions:
+  disableNameSuffixHash: true
+
+# Then we define a few vars to reference the ConigMap keys
+vars:
+- name: FOO
+  objref:
+    kind: ConfigMap
+    name: kustomize-vars
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.foo
+- name: BAR
+  objref:
+    kind: ConfigMap
+    name: kustomize-vars
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.bar
+- name: BAZ
+  objref:
+    kind: ConfigMap
+    name: kustomize-vars
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.baz
