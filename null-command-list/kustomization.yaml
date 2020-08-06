@@ -5,7 +5,7 @@ resources:
 - deployment.yaml
 
 patchesStrategicMerge:
-- Deployment-patch.yaml
+- deployment-patch.yaml
 
 # The presence of the following VAR, will cause `command: null` to appear in final output
 vars:
